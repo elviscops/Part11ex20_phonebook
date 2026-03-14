@@ -22,9 +22,9 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
-#       - name: Create deployment
-#         if: ${{ github.event_name == 'push' }}
-#         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
+      - name: Create deployment
+        if: ${{ github.event_name == 'push' }}
+        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
 
 #   tag_release:
 #     needs: [deployment_pipeline]
