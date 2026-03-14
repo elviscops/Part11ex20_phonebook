@@ -10,10 +10,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      PORT: 3001
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
-      PLAYWRIGHT_TEST_BASE_URL: http://127.0.0.1:3001
 
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +23,6 @@ jobs:
       - name: Start app
         run: npm start &
       - name: Wait for app to be ready
-        run: npx wait-on http://127.0.0.1:3001
+        run: npx wait-on http://127.0.0.1:3003
       - name: Run Playwright tests
         run: npm run test

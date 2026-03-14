@@ -1,6 +1,6 @@
 const { test, describe, expect } = require('@playwright/test')
 
-const baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3001'
+const baseUrl = 'http://localhost:3003'
 
 const fillPersonForm = async (page, name, number) => {
   const form = page.locator('form').first()
