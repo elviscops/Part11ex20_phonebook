@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 
-const url = process.env.MONGODB_URI
+const mongodbPassword = process.argv[2]
+
+const url = `mongodb+srv://elviscops:${mongodbPassword}@cluster0.pcpmlre.mongodb.net/Phonebook?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.set('strictQuery',false)
- 
+
 mongoose.connect(url)
 
 const contactSchema = new mongoose.Schema({
