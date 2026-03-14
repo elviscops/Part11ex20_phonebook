@@ -4,27 +4,12 @@ on:
   workflow_run:
     workflows: ["Playwright Test"]
     types: [completed]
-    branches: [main]
-  push:
-    branches:
-      - main
-  pull_request:
-    branches: [ main ]
-    types: [ opened, synchronize ]
 
 jobs:
   deployment_pipeline:
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
     runs-on: ubuntu-latest
-    env:
-        PORT: 3003
-        MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        PLAYWRIGHT_TEST_BASE_URL: http://127.0.0.1:3003
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
       - name: Create deployment
         if: ${{ github.event_name == 'push' }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
