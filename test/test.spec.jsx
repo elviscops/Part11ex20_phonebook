@@ -1,6 +1,6 @@
 const { test, describe, expect } = require('@playwright/test')
 
-const baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3003'
+const baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3001'
 
 const buildContact = (overrides = {}) => {
   const unique = `${Date.now()}${Math.floor(Math.random() * 1000)}`
