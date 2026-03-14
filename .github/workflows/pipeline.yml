@@ -19,9 +19,15 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Start app
+        run: npm start &
+      - name: Wait for app to be ready
+        run: npx wait-on http://127.0.0.1:3003
+      - name: Run Playwright tests
+        run: npm run test
       - name: Create deployment
         if: ${{ github.event_name == 'push' }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
