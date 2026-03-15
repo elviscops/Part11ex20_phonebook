@@ -27,4 +27,4 @@ jobs:
       - name: Wait for app to be ready
         run: npx wait-on http://127.0.0.1:3003
       - name: Run Playwright tests
-        run: npm run test
+        run: npm run test -- --workers=1
