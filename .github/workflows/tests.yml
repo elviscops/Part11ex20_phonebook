@@ -1,5 +1,5 @@
 name: Playwright Test
-
+description: "This workflow runs Playwright tests on push and pull request events to the main branch. It sets up the environment, starts the application, and executes the tests."
 on:
   push:
     branches: [main]
