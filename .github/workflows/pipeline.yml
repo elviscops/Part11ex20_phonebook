@@ -1,5 +1,5 @@
 name: Deployment pipeline
-
+description: "This workflow runs after the Playwright Test workflow completes successfully on push events to the main branch. It creates a deployment and tags a new release based on commit messages."
 on:
   workflow_run:
     workflows: ["Playwright Test"]
